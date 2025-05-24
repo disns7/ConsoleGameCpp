@@ -60,5 +60,8 @@
     <ClInclude Include="BattleUI.h">
       <Filter>ui_text</Filter>
     </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>core</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
