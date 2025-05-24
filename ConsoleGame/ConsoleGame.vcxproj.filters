@@ -1,22 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="core">
+      <UniqueIdentifier>{0973ec95-cc64-43a6-8e1e-8070c8094c11}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="units">
+      <UniqueIdentifier>{2a745bf5-038d-4c61-9524-319810b4d87a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="ui_text">
+      <UniqueIdentifier>{331e6149-9cbf-42db-9fd2-d2cba68ee1bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="saves">
+      <UniqueIdentifier>{591b7e57-be0c-401c-92b0-d306b9c9ace4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{f92dca82-f9a5-4a98-9f91-a1bb2cb0532d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bot_actions">
+      <UniqueIdentifier>{7af0956b-1b27-437c-90ad-d59204610b20}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ConsoleGame.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Game.cpp">
+      <Filter>core</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Army.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>ui_text</Filter>
+    </ClCompile>
+    <ClCompile Include="ArmyBuilder.cpp">
+      <Filter>ui_text</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleUI.cpp">
+      <Filter>ui_text</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Army.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>ui_text</Filter>
+    </ClInclude>
+    <ClInclude Include="ArmyBuilder.h">
+      <Filter>ui_text</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleUI.h">
+      <Filter>ui_text</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
