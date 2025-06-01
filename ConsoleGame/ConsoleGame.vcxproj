@@ -19,22 +19,34 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Archer.cpp" />
     <ClCompile Include="Army.cpp" />
-    <ClCompile Include="ArmyBuilder.cpp" />
+    <ClCompile Include="ArmyBuilderUI.cpp" />
     <ClCompile Include="BattleUI.cpp" />
+    <ClCompile Include="Commander.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Healer.cpp" />
+    <ClCompile Include="Infantry.cpp" />
+    <ClCompile Include="Knight.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Unit.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Archer.h" />
     <ClInclude Include="Army.h" />
-    <ClInclude Include="ArmyBuilder.h" />
+    <ClInclude Include="ArmyBuilderUI.h" />
     <ClInclude Include="BattleUI.h" />
+    <ClInclude Include="Commander.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Healer.h" />
+    <ClInclude Include="Infantry.h" />
+    <ClInclude Include="Knight.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Unit.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

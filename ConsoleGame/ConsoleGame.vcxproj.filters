@@ -19,6 +19,12 @@
     <Filter Include="bot_actions">
       <UniqueIdentifier>{7af0956b-1b27-437c-90ad-d59204610b20}</UniqueIdentifier>
     </Filter>
+    <Filter Include="units\alive">
+      <UniqueIdentifier>{3a352589-d200-4c6c-832d-8212a6189379}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="units\undead">
+      <UniqueIdentifier>{fe559837-0d60-4d5c-b1bb-1b3b61fb72c3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -34,11 +40,29 @@
     <ClCompile Include="Menu.cpp">
       <Filter>ui_text</Filter>
     </ClCompile>
-    <ClCompile Include="ArmyBuilder.cpp">
+    <ClCompile Include="ArmyBuilderUI.cpp">
       <Filter>ui_text</Filter>
     </ClCompile>
     <ClCompile Include="BattleUI.cpp">
       <Filter>ui_text</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit.cpp">
+      <Filter>units</Filter>
+    </ClCompile>
+    <ClCompile Include="Commander.cpp">
+      <Filter>units</Filter>
+    </ClCompile>
+    <ClCompile Include="Knight.cpp">
+      <Filter>units\alive</Filter>
+    </ClCompile>
+    <ClCompile Include="Infantry.cpp">
+      <Filter>units\alive</Filter>
+    </ClCompile>
+    <ClCompile Include="Archer.cpp">
+      <Filter>units\alive</Filter>
+    </ClCompile>
+    <ClCompile Include="Healer.cpp">
+      <Filter>units\alive</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -54,7 +78,7 @@
     <ClInclude Include="Menu.h">
       <Filter>ui_text</Filter>
     </ClInclude>
-    <ClInclude Include="ArmyBuilder.h">
+    <ClInclude Include="ArmyBuilderUI.h">
       <Filter>ui_text</Filter>
     </ClInclude>
     <ClInclude Include="BattleUI.h">
@@ -62,6 +86,24 @@
     </ClInclude>
     <ClInclude Include="Config.h">
       <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit.h">
+      <Filter>units</Filter>
+    </ClInclude>
+    <ClInclude Include="Commander.h">
+      <Filter>units</Filter>
+    </ClInclude>
+    <ClInclude Include="Knight.h">
+      <Filter>units\alive</Filter>
+    </ClInclude>
+    <ClInclude Include="Infantry.h">
+      <Filter>units\alive</Filter>
+    </ClInclude>
+    <ClInclude Include="Archer.h">
+      <Filter>units\alive</Filter>
+    </ClInclude>
+    <ClInclude Include="Healer.h">
+      <Filter>units\alive</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
