@@ -40,14 +40,16 @@ const int Unit::getCost() const {
     return cost;
 }
 
-const ArmorType Unit::getArmorType() const
-{
+const ArmorType Unit::getArmorType() const{
     return armorType;
 }
 
-const int Unit::getArmorValue() const
-{
+const int Unit::getArmorValue() const{
     return armorValue;
+}
+
+const void Unit::unitInfo(){
+    std::cout << "This " << name << " has " << hp << " and " << mana << " and " << armorValue << " armor value.\n";
 }
 
 const int Unit::getArmorMultiplier() const {

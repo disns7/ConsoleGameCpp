@@ -1,41 +1,49 @@
 #include "Army.h"
+#include <iostream>
 
-bool Army::addNormalUnit(Unit* unit) {
-    if (normalCount < Config::MAX_NORMAL_UNITS) {
-        normalUnits[normalCount++] = unit;
-        return true;
-    }
-    return false;
+void Army::addUnit(std::unique_ptr<Unit> unit) {
+    units.push_back(std::move(unit));
 }
 
-bool Army::addCommander(Commander* commander) {
-    if (commanderCount < Config::MAX_COMMANDER_UNITS) {
-        commanders[commanderCount++] = commander;
-        return true;
-    }
-    return false;
+void Army::addCommander(std::unique_ptr<Commander> commander) {
+    commanders.push_back(std::move(commander));
 }
 
-void Army::attackAll() {
-    for (int i = 0; i < normalCount; ++i) {
-        if (normalUnits[i]) normalUnits[i]->attack();
+template<typename unit>
+void Army::removeAt(std::vector<std::unique_ptr<unit>>& vec, size_t index) {
+    if (index < vec.size()) {
+        vec.erase(vec.begin() + index);
+        std::cout << "Removed element at index " << index << "\n";
     }
-    for (int i = 0; i < commanderCount; ++i) {
-        if (commanders[i]) commanders[i]->attack();
+    else {
+        std::cout << "Invalid index: " << index << "\n";
     }
 }
 
-void Army::useCommanderAbilities() {
-    for (int i = 0; i < commanderCount; ++i) {
-        if (commanders[i]) commanders[i]->useAbility();
+void Army::removeUnit(size_t index) {
+    removeAt(units, index);
+}
+
+void Army::removeCommander(size_t index) {
+    removeAt(commanders, index);
+}
+
+void Army::printArmy() const {
+    std::cout << "--- Units ---\n";
+    for (const auto& unit : units) {
+        unit->unitInfo(); 
+    }
+
+    std::cout << "--- Commanders ---\n";
+    for (const auto& commander : commanders) {
+        commander->unitInfo(); 
     }
 }
 
-Army::~Army() {
-    for (int i = 0; i < normalCount; ++i) {
-        delete normalUnits[i];
-    }
-    for (int i = 0; i < commanderCount; ++i) {
-        delete commanders[i];
-    }
+size_t Army::getUnitCount() const {
+    return units.size();
+}
+
+size_t Army::getCommanderCount() const {
+    return commanders.size();
 }

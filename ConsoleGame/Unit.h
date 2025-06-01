@@ -34,4 +34,5 @@ public:
     const int getCost() const;
     const ArmorType getArmorType() const;
     const int getArmorValue() const;
+    const void unitInfo();
 };
