@@ -5,3 +5,7 @@ Archer::Archer()
     : Unit("Archer", 535, 10, 0, 3, ArmorType::Medium) {
     cost = Config::GetUnitCost("Archer");
 }
+
+std::string Archer::getType() const {
+    return "Archer";
+}

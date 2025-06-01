@@ -5,3 +5,7 @@ Knight::Knight()
     : Unit("Knight", 835, 45, 0, 10, ArmorType::Heavy) {
     cost = Config::GetUnitCost("Knight");
 }
+
+std::string Knight::getType() const { 
+    return "Knight"; 
+}

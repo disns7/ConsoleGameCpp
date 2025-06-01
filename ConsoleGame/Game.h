@@ -2,16 +2,16 @@
 #pragma once
 #include "Player.h"
 #include "Menu.h"
-#include "ArmyBuilder.h"
+#include "ArmyBuilderUI.h"
 
 
 class Game {
 private:
-    //Player* player1;
-    //Player* player2;
+    Player player1;
+    //Player player2;
 
-    Menu menu;
     ArmyBuilder armyBuilder;
+    Menu menu;
     bool isRunning;
 
 

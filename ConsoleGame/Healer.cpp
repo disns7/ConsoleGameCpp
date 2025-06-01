@@ -9,3 +9,7 @@ Healer::Healer()
 void Healer::heal() {
 
 }
+
+std::string Healer::getType() const {
+    return "Healer";
+}

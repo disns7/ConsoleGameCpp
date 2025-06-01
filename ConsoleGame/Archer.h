@@ -4,4 +4,5 @@
 class Archer : public Unit {
 public:
     Archer();
+    std::string getType() const override;
 };

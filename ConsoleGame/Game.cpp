@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "ArmyBuilderUI.h"
 #include <iostream>
 
 Game::Game(){
@@ -14,6 +15,7 @@ void Game::run() {
         switch (choice)
         {
         case 1:
+            armyBuilder.pickUnits(player1);
             break;
 
         case 2:

@@ -1,6 +1,7 @@
 #include "Unit.h"
 #include "Config.h"
 #include <iostream>
+#include "Player.h"
 
 
 Unit::Unit(const std::string& name, int hp, int attack, int mana, int armorValue, ArmorType armorType)
@@ -32,7 +33,8 @@ const std::string Unit::getName() const {
     return name;
 }
 
-const int Unit::getHP() const {
+
+const double Unit::getHP() const {
     return hp;
 }
 
@@ -49,16 +51,16 @@ const int Unit::getArmorValue() const{
 }
 
 const void Unit::unitInfo(){
-    std::cout << "This " << name << " has " << hp << " and " << mana << " and " << armorValue << " armor value.\n";
+    std::cout << name << " - " << hp << " hp | " << mana << " mana | " << armorValue << " armor value.\n";
 }
 
-const int Unit::getArmorMultiplier() const {
+const double Unit::getArmorMultiplier() const {
     switch (armorType) {
     case ArmorType::Unarmored: return 1;
     case ArmorType::Leather:   return 0.75;
     case ArmorType::Medium:    return 0.5;
     case ArmorType::Heavy:     return 0.25;
-    default: return 1.0f;
+    default: return 1.0;
     }
 }
 
