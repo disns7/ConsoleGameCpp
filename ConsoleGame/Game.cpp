@@ -15,7 +15,7 @@ void Game::run() {
         switch (choice)
         {
         case 1:
-            armyBuilder.pickUnits(player1);
+            armyBuilder.pickAliveUnits(player1);
             break;
 
         case 2:

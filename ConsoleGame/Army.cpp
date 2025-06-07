@@ -49,6 +49,26 @@ void Army::printArmy() const {
     for (const auto& commander : commanders) {
         commander->unitInfo(); 
     }
+    std::cout << "\n\n";
+}
+
+const std::vector<std::unique_ptr<Unit>>& Army::getUnits() const
+{
+    return units;
+}
+
+void Army::addToSelectedUnits(Unit* unit) {
+    selectedUnits.push_back(unit);
+}
+
+void Army::removeFromSelectedUnits(size_t index) {
+    if (index < selectedUnits.size()) {
+        selectedUnits.erase(selectedUnits.begin() + index);
+    }
+}
+
+const std::vector<Unit*>& Army::getSelectedUnits() const {
+    return selectedUnits;
 }
 
 size_t Army::getUnitCount() const {

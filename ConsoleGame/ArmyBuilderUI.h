@@ -1,38 +1,30 @@
 #pragma once
 #include <iostream>
-#include "Config.h"
-#include "Army.h"
-#include "Unit.h"
-#include "Player.h"
+
+#include "Paladin.h"
+#include "BladeDancer.h"
+#include "UndeadHunter.h"
 
 #include "Archer.h"
 #include "Infantry.h"
 #include "Knight.h"
 #include "Healer.h"
+#include "Wizard.h"
 
+#include "ArmyTemplate.h"
 
 class ArmyBuilder {
 
+    ArmyTemplate armyTemplate;
+
 public:
 
-    template <typename T>
-    void tryAddUnit(Player& player, const std::string& unitName) {
-        int cost = Config::GetUnitCost(unitName);
-        try {
-            player.spendGold(cost);
-            player.getArmy().addUnit(std::make_unique<T>());
-        }
-        catch (const std::runtime_error& e) {
-            std::cout << "Failed to add " << unitName << ": " << e.what() << '\n';
-        }
-    }
-
-	void pickCommanders(Army& army);
-	void pickUnits(Player& player);
+	void pickAliveCommanders(Player& player);
+	void pickAliveUnits(Player& player);
 
 
-	int unitPicker(Player& player);
-	int commanderPicker(Army& army);
+	int aliveUnitPicker(Player& player);
+	int aliveCommanderPicker(Army& army);
 
 };
 

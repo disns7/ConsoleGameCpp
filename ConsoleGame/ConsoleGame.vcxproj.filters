@@ -19,11 +19,17 @@
     <Filter Include="bot_actions">
       <UniqueIdentifier>{7af0956b-1b27-437c-90ad-d59204610b20}</UniqueIdentifier>
     </Filter>
-    <Filter Include="units\alive">
+    <Filter Include="units\alive units">
       <UniqueIdentifier>{3a352589-d200-4c6c-832d-8212a6189379}</UniqueIdentifier>
     </Filter>
-    <Filter Include="units\undead">
+    <Filter Include="units\undead units">
       <UniqueIdentifier>{fe559837-0d60-4d5c-b1bb-1b3b61fb72c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="units\alive commanders">
+      <UniqueIdentifier>{28e0f73a-0b40-4a3c-8fdd-83bdd91895a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="units\undead commanders">
+      <UniqueIdentifier>{68e6759d-5ddd-4448-9b59-9942f8d1bd68}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -53,16 +59,61 @@
       <Filter>units</Filter>
     </ClCompile>
     <ClCompile Include="Knight.cpp">
-      <Filter>units\alive</Filter>
+      <Filter>units\alive units</Filter>
     </ClCompile>
     <ClCompile Include="Infantry.cpp">
-      <Filter>units\alive</Filter>
+      <Filter>units\alive units</Filter>
     </ClCompile>
     <ClCompile Include="Archer.cpp">
-      <Filter>units\alive</Filter>
+      <Filter>units\alive units</Filter>
     </ClCompile>
     <ClCompile Include="Healer.cpp">
-      <Filter>units\alive</Filter>
+      <Filter>units\alive units</Filter>
+    </ClCompile>
+    <ClCompile Include="Wizard.cpp">
+      <Filter>units\alive units</Filter>
+    </ClCompile>
+    <ClCompile Include="Paladin.cpp">
+      <Filter>units\alive commanders</Filter>
+    </ClCompile>
+    <ClCompile Include="UndeadHunter.cpp">
+      <Filter>units\alive commanders</Filter>
+    </ClCompile>
+    <ClCompile Include="BladeDancer.cpp">
+      <Filter>units\alive commanders</Filter>
+    </ClCompile>
+    <ClCompile Include="BotArmyBuilder.cpp">
+      <Filter>bot_actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>units\undead units</Filter>
+    </ClCompile>
+    <ClCompile Include="Ghoul.cpp">
+      <Filter>units\undead units</Filter>
+    </ClCompile>
+    <ClCompile Include="Necromancer.cpp">
+      <Filter>units\undead units</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombie.cpp">
+      <Filter>units\undead units</Filter>
+    </ClCompile>
+    <ClCompile Include="Dibuk.cpp">
+      <Filter>units\undead units</Filter>
+    </ClCompile>
+    <ClCompile Include="Revenant.cpp">
+      <Filter>units\undead units</Filter>
+    </ClCompile>
+    <ClCompile Include="Ghost.cpp">
+      <Filter>units\undead units</Filter>
+    </ClCompile>
+    <ClCompile Include="DeadKnight.cpp">
+      <Filter>units\undead commanders</Filter>
+    </ClCompile>
+    <ClCompile Include="LordOfTerror.cpp">
+      <Filter>units\undead commanders</Filter>
+    </ClCompile>
+    <ClCompile Include="Lich.cpp">
+      <Filter>units\undead commanders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -94,16 +145,64 @@
       <Filter>units</Filter>
     </ClInclude>
     <ClInclude Include="Knight.h">
-      <Filter>units\alive</Filter>
+      <Filter>units\alive units</Filter>
     </ClInclude>
     <ClInclude Include="Infantry.h">
-      <Filter>units\alive</Filter>
+      <Filter>units\alive units</Filter>
     </ClInclude>
     <ClInclude Include="Archer.h">
-      <Filter>units\alive</Filter>
+      <Filter>units\alive units</Filter>
     </ClInclude>
     <ClInclude Include="Healer.h">
-      <Filter>units\alive</Filter>
+      <Filter>units\alive units</Filter>
+    </ClInclude>
+    <ClInclude Include="Wizard.h">
+      <Filter>units\alive units</Filter>
+    </ClInclude>
+    <ClInclude Include="Paladin.h">
+      <Filter>units\alive commanders</Filter>
+    </ClInclude>
+    <ClInclude Include="UndeadHunter.h">
+      <Filter>units\alive commanders</Filter>
+    </ClInclude>
+    <ClInclude Include="BladeDancer.h">
+      <Filter>units\alive commanders</Filter>
+    </ClInclude>
+    <ClInclude Include="ArmyTemplate.h">
+      <Filter>ui_text</Filter>
+    </ClInclude>
+    <ClInclude Include="BotArmyBuilder.h">
+      <Filter>bot_actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
+      <Filter>units\undead units</Filter>
+    </ClInclude>
+    <ClInclude Include="Ghoul.h">
+      <Filter>units\undead units</Filter>
+    </ClInclude>
+    <ClInclude Include="Necromancer.h">
+      <Filter>units\undead units</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>units\undead units</Filter>
+    </ClInclude>
+    <ClInclude Include="Dibuk.h">
+      <Filter>units\undead units</Filter>
+    </ClInclude>
+    <ClInclude Include="Revenant.h">
+      <Filter>units\undead units</Filter>
+    </ClInclude>
+    <ClInclude Include="Ghost.h">
+      <Filter>units\undead units</Filter>
+    </ClInclude>
+    <ClInclude Include="DeadKnight.h">
+      <Filter>units\undead commanders</Filter>
+    </ClInclude>
+    <ClInclude Include="LordOfTerror.h">
+      <Filter>units\undead commanders</Filter>
+    </ClInclude>
+    <ClInclude Include="Lich.h">
+      <Filter>units\undead commanders</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

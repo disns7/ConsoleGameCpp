@@ -1,8 +1,10 @@
 #pragma once
 #include "Unit.h"
+#include "Config.h"
 
 class Commander : public Unit {
 public:
-    virtual void useAbility() = 0;
-    virtual ~Commander() {}
+    Commander(const std::string& name, double hp, int attack, int mana,
+    int armorValue, ArmorType armorType);
+    virtual void useAbility() {};
 };

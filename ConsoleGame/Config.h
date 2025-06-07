@@ -15,7 +15,8 @@ public:
         if (unitName == "Archer") return 300;
         if (unitName == "Knight") return 700;
         if (unitName == "Healer") return 150;
-        if (unitName == "Wizard") return 250;
+        if (unitName == "Wizard") return 400;
+
         if (unitName == "Skeleton") return 100;
         if (unitName == "Ghoul") return 250;
         if (unitName == "Necromancer") return 400;

@@ -6,10 +6,14 @@ Healer::Healer()
     cost = Config::GetUnitCost("Healer");
 }
 
-void Healer::heal() {
-
-}
 
 std::string Healer::getType() const {
     return "Healer";
+}
+
+void Healer::onSupport(Unit& friendlyTarget) {
+    if (mana > 100 && !friendlyTarget.isDead()) {     
+         friendlyTarget.heal(100);
+         mana -= 100;
+    }
 }

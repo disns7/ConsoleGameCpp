@@ -4,14 +4,15 @@
 #include "Player.h"
 
 
-Unit::Unit(const std::string& name, int hp, int attack, int mana, int armorValue, ArmorType armorType)
-    : name(name), hp(hp), attackPower(attack), mana(mana), armorValue(armorValue) , armorType(armorType), cost(Config::GetUnitCost(name)) {
+Unit::Unit(const std::string& name, double hp, int attack, int mana, int armorValue, ArmorType armorType)
+    : name(name), hp(hp), maxHP(hp), attackPower(attack), mana(mana), maxMana(mana), armorValue(armorValue) , armorType(armorType), cost(Config::GetUnitCost(name)) {
 }
 
 const void Unit::attack(Unit& target) {
     if (!isDead()) {
         std::cout << name << " attacks " << target.getName() << " for " << attackPower << " damage!\n";
         target.takeDamage(attackPower);
+        onAttack(target);
     }
 }
 
@@ -23,6 +24,24 @@ void Unit::takeDamage(int amount) {
         hp -= amount;
     }
     if (hp < 0) hp = 0;
+}
+
+void Unit::heal(int amount) {
+    if (isDead()) return; 
+    hp += amount;
+    if (hp > maxHP) hp = maxHP;
+}
+
+void Unit::addMana(int amount)
+{
+    if (isDead()) return;
+    mana += amount;    
+    if (mana > maxMana) mana = maxMana;
+}
+
+const double Unit::getMaxHP() const
+{
+    return maxHP;
 }
 
 bool Unit::isDead() const {
