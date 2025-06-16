@@ -11,21 +11,25 @@
 #include "Healer.h"
 #include "Wizard.h"
 
+#include "Menu.h"
+
 #include "ArmyTemplate.h"
 
 class ArmyBuilder {
 
     ArmyTemplate armyTemplate;
+	Menu menu;
 
 public:
 
 	void pickAliveCommanders(Player& player);
 	void pickAliveUnits(Player& player);
 
+	int aliveUnitPicker(size_t unitsLeftToAdd, int playerGold);
+	int aliveCommanderPicker(size_t commandersLeftToAdd);
 
-	int aliveUnitPicker(Player& player);
-	int aliveCommanderPicker(Army& army);
-
+	void selectAliveArmy(Player& player);
+	void removeFromSelectedAliveUnits(Player& player);
 };
 
 

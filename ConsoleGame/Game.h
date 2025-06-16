@@ -3,13 +3,14 @@
 #include "Player.h"
 #include "Menu.h"
 #include "ArmyBuilderUI.h"
+#include "BotArmyBuilder.h"
 
 
 class Game {
 private:
     Player player1;
-    //Player player2;
-
+    Player botPlayer;
+    BotArmyBuilder botArmyBuilder;  
     ArmyBuilder armyBuilder;
     Menu menu;
     bool isRunning;

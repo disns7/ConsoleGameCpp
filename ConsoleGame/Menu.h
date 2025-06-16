@@ -11,4 +11,6 @@ public:
 	void displayBattleResults(const Player& winner, const Player& loser);
 	void displayInstructions();
 
+	void displaySelectionInstructions(Player& player);
+
 };

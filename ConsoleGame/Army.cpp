@@ -1,6 +1,15 @@
 #include "Army.h"
 #include <iostream>
 
+template<typename unit>
+void Army::removeAt(std::vector<std::unique_ptr<unit>>& vec, size_t index) {
+    if (index < vec.size()) {
+        vec.erase(vec.begin() + index);
+    }
+    else {
+    }
+}
+
 void Army::addUnit(std::unique_ptr<Unit> unit) {
     if (unitsLeftToAdd > 0) {
         units.push_back(std::move(unit));
@@ -21,15 +30,6 @@ void Army::addCommander(std::unique_ptr<Commander> commander) {
     }
 }
 
-template<typename unit>
-void Army::removeAt(std::vector<std::unique_ptr<unit>>& vec, size_t index) {
-    if (index < vec.size()) {
-        vec.erase(vec.begin() + index);
-    }
-    else {
-    }
-}
-
 void Army::removeUnit(size_t index) {
     removeAt(units, index);
     ++unitsLeftToAdd;
@@ -37,24 +37,6 @@ void Army::removeUnit(size_t index) {
 
 void Army::removeCommander(size_t index) {
     removeAt(commanders, index);
-}
-
-void Army::printArmy() const {
-    std::cout << "\n--- Units ---\n";
-    for (const auto& unit : units) {
-        unit->unitInfo(); 
-    }
-
-    std::cout << "\n--- Commanders ---\n";
-    for (const auto& commander : commanders) {
-        commander->unitInfo(); 
-    }
-    std::cout << "\n\n";
-}
-
-const std::vector<std::unique_ptr<Unit>>& Army::getUnits() const
-{
-    return units;
 }
 
 void Army::addToSelectedUnits(Unit* unit) {
@@ -67,9 +49,24 @@ void Army::removeFromSelectedUnits(size_t index) {
     }
 }
 
-const std::vector<Unit*>& Army::getSelectedUnits() const {
+ std::vector<std::unique_ptr<Unit>>& Army::getUnits() 
+{
+    return units;
+}
+
+ std::vector<std::unique_ptr<Commander>>& Army::getCommanders()
+ {
+     return commanders;
+ }
+
+ std::vector<Unit*>& Army::getSelectedUnits()  {
     return selectedUnits;
 }
+
+ std::vector<Commander*>& Army::getSelectedCommanders()
+ {
+     return selectedCommanders;
+ }
 
 size_t Army::getUnitCount() const {
     return units.size();
@@ -87,4 +84,31 @@ size_t Army::getUnitsLeftToAdd() const
 size_t Army::getCommandersLeftToAdd() const
 {
     return commandersLeftToAdd;
+}
+
+void Army::printArmy() const {
+    std::cout << "\n--- Units ---\n";
+    for (const auto& unit : units) {
+        unit->unitInfo(); 
+    }
+
+    std::cout << "\n--- Commanders ---\n";
+    for (const auto& commander : commanders) {
+        commander->unitInfo(); 
+    }
+    std::cout << "\n\n";
+}
+
+void Army::printSelectedArmy() const
+{
+    std::cout << "\n--- Selected Units ---\n";
+    for (const auto& unit : selectedUnits) {
+        unit->unitInfo();
+    }
+
+    std::cout << "\n--- Selected Commanders ---\n";
+    for (const auto& commander : selectedCommanders) {
+        commander->unitInfo();
+    }
+    std::cout << "\n\n";
 }

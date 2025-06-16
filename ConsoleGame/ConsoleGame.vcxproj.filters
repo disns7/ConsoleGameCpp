@@ -49,7 +49,7 @@
     <ClCompile Include="ArmyBuilderUI.cpp">
       <Filter>ui_text</Filter>
     </ClCompile>
-    <ClCompile Include="BattleUI.cpp">
+    <ClCompile Include="Battle.cpp">
       <Filter>ui_text</Filter>
     </ClCompile>
     <ClCompile Include="Unit.cpp">
@@ -115,6 +115,9 @@
     <ClCompile Include="Lich.cpp">
       <Filter>units\undead commanders</Filter>
     </ClCompile>
+    <ClCompile Include="Helper.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -132,7 +135,7 @@
     <ClInclude Include="ArmyBuilderUI.h">
       <Filter>ui_text</Filter>
     </ClInclude>
-    <ClInclude Include="BattleUI.h">
+    <ClInclude Include="Battle.h">
       <Filter>ui_text</Filter>
     </ClInclude>
     <ClInclude Include="Config.h">
@@ -168,9 +171,6 @@
     <ClInclude Include="BladeDancer.h">
       <Filter>units\alive commanders</Filter>
     </ClInclude>
-    <ClInclude Include="ArmyTemplate.h">
-      <Filter>ui_text</Filter>
-    </ClInclude>
     <ClInclude Include="BotArmyBuilder.h">
       <Filter>bot_actions</Filter>
     </ClInclude>
@@ -203,6 +203,12 @@
     </ClInclude>
     <ClInclude Include="Lich.h">
       <Filter>units\undead commanders</Filter>
+    </ClInclude>
+    <ClInclude Include="ArmyTemplate.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Helper.h">
+      <Filter>utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

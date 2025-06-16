@@ -16,8 +16,6 @@ int Menu::displayMainMenu() {
 }
 
 
-
-
 void Menu::displaySaveMenu(const Player& player){
 
 }
@@ -30,7 +28,24 @@ void Menu::displayBattleResults(const Player& winner, const Player& loser){
 }
 
 void Menu::displayInstructions() {
-    std::cout << "INSTRUCTIONS\n";
+    std::cout << "\n----INSTRUCTIONS----\n";
+    std::cout << "The game is played by the principle best of 5 duels.\n";
+    std::cout << "Each round gives one point to the winner.\n";
+    std::cout << "A duel is won when the selected enemy units have no hp left.\n";
+    std::cout << "When you press NewGame:\n";
+    std::cout << "You have to pick the units and commanders that you will take into battle.\n";
+    std::cout << "Your bot opponent will pick his units automatically\n";
+    std::cout << "Before each round you will have to select up to 3 commanders to take into battle.\n";
+    std::cout << "You will also be given the chance to add more units to ur regular army every round.\n";
+    std::cout << "\n";
+
+}
+
+void Menu::displaySelectionInstructions(Player& player)
+{
+    std::cout << "\nTo select up to 3 commanders for the upcoming battle type 'SELECT BOSS <boss name>'. \n";
+    std::cout << "To select units type 'SELECT <unit name> <unit count>'\n";
+    std::cout << "To advance to the next stage of battle, once you have selected the units type 'START'\n";
     std::cout << "\n";
 
 }

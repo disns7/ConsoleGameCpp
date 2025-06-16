@@ -13,8 +13,8 @@ private:
     std::vector<Unit*> selectedUnits;
     std::vector<Commander*> selectedCommanders;
 
-    int unitsLeftToAdd = Config::MAX_NORMAL_UNITS;
-    int commandersLeftToAdd = Config::MAX_COMMANDER_UNITS;
+    size_t unitsLeftToAdd = Config::MAX_NORMAL_UNITS;
+    size_t commandersLeftToAdd = Config::MAX_COMMANDER_UNITS;
 
     template<typename unit>
     void removeAt(std::vector<std::unique_ptr<unit>>& vec, size_t index);
@@ -30,14 +30,18 @@ public:
     void addToSelectedUnits(Unit* unit);
     void removeFromSelectedUnits(size_t index);
 
-    const std::vector<Unit*>& getSelectedUnits() const;
-    const std::vector<std::unique_ptr<Unit>>& getUnits() const;
+     std::vector<Unit*>& getSelectedUnits();
+     std::vector<Commander*>& getSelectedCommanders();
+     std::vector<std::unique_ptr<Unit>>& getUnits() ;
+     std::vector<std::unique_ptr<Commander>>& getCommanders();
+
     size_t getUnitCount() const;
     size_t getCommanderCount() const;
     size_t getUnitsLeftToAdd() const;
     size_t getCommandersLeftToAdd() const;
 
     void printArmy() const;
+    void printSelectedArmy() const;
 
 
 

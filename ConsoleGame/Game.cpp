@@ -1,8 +1,15 @@
 #include "Game.h"
-#include "ArmyBuilderUI.h"
 #include <iostream>
 
-Game::Game(){
+Game::Game(): 
+    player1(),                         
+    botPlayer(),                      
+    botArmyBuilder(botPlayer),        
+    armyBuilder(),                    
+    menu(),                            
+    isRunning(true)                  
+{
+    
 }
 
 Game::~Game(){
@@ -15,7 +22,8 @@ void Game::run() {
         switch (choice)
         {
         case 1:
-            armyBuilder.pickAliveUnits(player1);
+            armyBuilder.pickAliveCommanders(player1);
+            botArmyBuilder.buildArmy();
             break;
 
         case 2:

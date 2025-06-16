@@ -26,6 +26,7 @@ private:
     void pickDeadCommanders();
 
 public:
+
     BotArmyBuilder(Player& player);
     void buildArmy();
 };

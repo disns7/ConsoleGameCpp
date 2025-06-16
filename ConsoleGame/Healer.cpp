@@ -12,7 +12,7 @@ std::string Healer::getType() const {
 }
 
 void Healer::onSupport(Unit& friendlyTarget) {
-    if (mana > 100 && !friendlyTarget.isDead()) {     
+    if (mana >= 100 && !friendlyTarget.isDead()) {     
          friendlyTarget.heal(100);
          mana -= 100;
     }

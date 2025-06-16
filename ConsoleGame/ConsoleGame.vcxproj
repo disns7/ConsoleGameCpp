@@ -22,7 +22,7 @@
     <ClCompile Include="Archer.cpp" />
     <ClCompile Include="Army.cpp" />
     <ClCompile Include="ArmyBuilderUI.cpp" />
-    <ClCompile Include="BattleUI.cpp" />
+    <ClCompile Include="Battle.cpp" />
     <ClCompile Include="BladeDancer.cpp" />
     <ClCompile Include="BotArmyBuilder.cpp" />
     <ClCompile Include="Commander.cpp" />
@@ -43,6 +43,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Revenant.cpp" />
     <ClCompile Include="Skeleton.cpp" />
+    <ClCompile Include="Helper.cpp" />
     <ClCompile Include="UndeadHunter.cpp" />
     <ClCompile Include="Unit.cpp" />
     <ClCompile Include="Wizard.cpp" />
@@ -53,7 +54,7 @@
     <ClInclude Include="Army.h" />
     <ClInclude Include="ArmyBuilderUI.h" />
     <ClInclude Include="ArmyTemplate.h" />
-    <ClInclude Include="BattleUI.h" />
+    <ClInclude Include="Battle.h" />
     <ClInclude Include="BladeDancer.h" />
     <ClInclude Include="BotArmyBuilder.h" />
     <ClInclude Include="Commander.h" />
@@ -74,6 +75,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Revenant.h" />
     <ClInclude Include="Skeleton.h" />
+    <ClInclude Include="Helper.h" />
     <ClInclude Include="UndeadHunter.h" />
     <ClInclude Include="Unit.h" />
     <ClInclude Include="Wizard.h" />

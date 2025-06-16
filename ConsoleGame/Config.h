@@ -24,6 +24,62 @@ public:
         if (unitName == "Dibbuk") return 300;
         if (unitName == "Revenant") return 300;
         if (unitName == "Ghost") return 500;
-        return 99999; 
+        return INT_MAX;
     }
+
+    static bool IsValidUnit(const std::string& unitName) {
+        return GetUnitCost(unitName) != INT_MAX;
+    }
+    static bool IsValidCommander(const std::string& name) {
+        const int commanderCount = 3;
+        const std::string validCommanders[commanderCount] = {
+            "paladin",
+            "bladedancer",
+            "undeadhunter"
+        };
+
+        for (int i = 0; i < commanderCount; ++i) {
+            if (name == validCommanders[i]) return true;
+        }
+            return false;
+        }
+    
+    enum CommanderType {
+        InvalidCommander = -1,
+        PaladinType,
+        BladeDancerType,
+        UndeadHunterType
+    };
+
+    static CommanderType GetCommanderType(const std::string& name) {
+        if (name == "paladin") return PaladinType;
+        if (name == "bladedancer") return BladeDancerType;
+        if (name == "undeadhunter") return UndeadHunterType;
+        return InvalidCommander;
+    }
+
+    enum UnitType {
+        InvalidUnit = -1,
+        InfantryType,
+        ArcherType,
+        KnightType,
+        HealerType,
+        WizardType
+    };
+
+    static UnitType GetUnitType(const std::string& name) {
+        if (name == "Infantry") return InfantryType;
+        if (name == "Archer") return ArcherType;
+        if (name == "Knight") return KnightType;
+        if (name == "Healer") return HealerType;
+        if (name == "Wizard") return WizardType;
+        return InvalidUnit;
+    }
+
+
+
+
+
+
+
 };
