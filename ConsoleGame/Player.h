@@ -8,7 +8,7 @@ class Player {
 protected:
     int gold = Config::STARTING_GOLD;
     Army army;
-    int points;
+    int points = 0;
 
 public:
     Player() = default;
@@ -18,4 +18,6 @@ public:
     int getGold() const;
     void spendGold(int amount);
     void addGold(int amount);
+    const int getPoints() const;
+    void addPoint();
 };

@@ -18,3 +18,13 @@ int Player::getGold() const{
 void Player::addGold(int amount) {
 	gold += amount;
 }
+
+const int Player::getPoints() const
+{
+	return points;
+}
+
+void Player::addPoint()
+{
+	points += 1;
+}

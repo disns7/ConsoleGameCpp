@@ -135,6 +135,8 @@ int ArmyBuilder::aliveCommanderPicker(size_t commandersLeftToAdd){
     return choice;
 }
 
+
+
 void ArmyBuilder::selectAliveArmy(Player& player)
 {
     std::string command;
@@ -160,29 +162,8 @@ void ArmyBuilder::selectAliveArmy(Player& player)
                 std::string commanderName = words[2];
 
                 if (Config::IsValidCommander(commanderName)) {
-                    Config::CommanderType type = Config::GetCommanderType(commanderName);
-                    switch (type) {
-
-                    case Config::PaladinType:
-                        armyTemplate.tryAddSelectedCommander<Paladin>(player, commanderName);
-                        break;
-
-                    case Config::BladeDancerType:
-                        std::cout << "asdasd";
-                        armyTemplate.tryAddSelectedCommander<BladeDancer>(player, commanderName);
-                        break;
-
-                    case Config::UndeadHunterType:
-                        armyTemplate.tryAddSelectedCommander<UndeadHunter>(player, commanderName);
-                        break;
-
-                    default:
-                        std::cout << "Unknown commander type: " << commanderName << "\n";
-                        break;
-                    }
-                    player.getArmy().printSelectedArmy();
+                    selectAliveCommanders(player, commanderName);
                 }
-
 
             }
             else if (words.size() >= 3) {
@@ -199,50 +180,78 @@ void ArmyBuilder::selectAliveArmy(Player& player)
                 unitName = StringHelper::capitalizeOnlyFirst(unitName);
 
                 if (Config::IsValidUnit(unitName)) {
-                    Config::UnitType unitType = Config::GetUnitType(unitName);
-
-                    switch (unitType) {
-                    case Config::InfantryType:
-                        armyTemplate.trySelectUnits<Infantry>(player, unitCount);
-                        break;
-
-                    case Config::ArcherType:
-                        armyTemplate.trySelectUnits<Archer>(player, unitCount);
-                        break;
-
-                    case Config::KnightType:
-                        armyTemplate.trySelectUnits<Knight>(player, unitCount);
-                        break;
-
-                    case Config::HealerType:
-                        armyTemplate.trySelectUnits<Healer>(player, unitCount);
-                        break;
-
-                    case Config::WizardType:
-                        armyTemplate.trySelectUnits<Wizard>(player, unitCount);
-                        break;
-
-                    default:
-                        std::cout << "Unknown unit type: " << unitName << "\n";
-                        break;
-                    }
-
-                    player.getArmy().printSelectedArmy();
-
-
+                    selectAliveUnits(player, unitName, unitCount);
+                }
+                else {
+                    std::cout << "Incomplete SELECT command.\n";
                 }
             }
-            else {
-                std::cout << "Incomplete SELECT command.\n";
-            }
-        }
-        else if (words.size() == 1 && words[0] == "start") {
-            isStarting = true;
-        }
-        else {
+        }else if(words.size() == 1 && words[0] == "start") {
+                isStarting = true;
+        } else if(words.size() == 1 && words[0] == "show") {
+            player.getArmy().printSelectedArmy();
+            player.getArmy().printArmy();
+        } else {
             std::cout << "Incorrect input, try again.\n";
         }
     }
+    std::cout << "GAME HAS STARTED.\n";
 }
+
+
+void ArmyBuilder::selectAliveUnits(Player& player, std::string unitName, int unitCount)
+{
+    Config::UnitType unitType = Config::GetUnitType(unitName);
+
+    switch (unitType) {
+    case Config::InfantryType:
+        armyTemplate.trySelectUnits<Infantry>(player, unitCount);
+        break;
+
+    case Config::ArcherType:
+        armyTemplate.trySelectUnits<Archer>(player, unitCount);
+        break;
+
+    case Config::KnightType:
+        armyTemplate.trySelectUnits<Knight>(player, unitCount);
+        break;
+
+    case Config::HealerType:
+        armyTemplate.trySelectUnits<Healer>(player, unitCount);
+        break;
+
+    case Config::WizardType:
+        armyTemplate.trySelectUnits<Wizard>(player, unitCount);
+        break;
+
+    default:
+        std::cout << "Unknown unit type: " << unitName << "\n";
+        break;
+    }
+}
+
+void ArmyBuilder::selectAliveCommanders(Player& player, std::string commanderName)
+{
+    Config::CommanderType type = Config::GetCommanderType(commanderName);
+    switch (type) {
+
+    case Config::PaladinType:
+        armyTemplate.tryAddSelectedCommander<Paladin>(player, commanderName);
+        break;
+
+    case Config::BladeDancerType:
+        armyTemplate.tryAddSelectedCommander<BladeDancer>(player, commanderName);
+        break;
+
+    case Config::UndeadHunterType:
+        armyTemplate.tryAddSelectedCommander<UndeadHunter>(player, commanderName);
+        break;
+
+    default:
+        std::cout << "Unknown commander type: " << commanderName << "\n";
+        break;
+    }
+}
+
 
 

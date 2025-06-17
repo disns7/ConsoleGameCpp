@@ -29,6 +29,9 @@ public:
 	int aliveCommanderPicker(size_t commandersLeftToAdd);
 
 	void selectAliveArmy(Player& player);
+	void selectAliveUnits(Player& player, std::string unitName, int unitCount);
+	void selectAliveCommanders(Player& player, std::string commanderName);
+
 	void removeFromSelectedAliveUnits(Player& player);
 };
 

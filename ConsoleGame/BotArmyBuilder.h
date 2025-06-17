@@ -14,6 +14,8 @@
 #include "Dibuk.h"
 #include "Necromancer.h"
 
+#include "ArmyTemplate.h"
+
 #include <random>
 
 class BotArmyBuilder {
@@ -22,11 +24,13 @@ private:
     ArmyTemplate armyTemplate;
     std::mt19937 rng;
 
-    void pickDeadUnits();
-    void pickDeadCommanders();
 
 public:
 
+    void pickDeadUnits();
+    void pickDeadCommanders();
     BotArmyBuilder(Player& player);
     void buildArmy();
+    void selectDeadArmy();
+
 };

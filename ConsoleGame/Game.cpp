@@ -23,7 +23,9 @@ void Game::run() {
         {
         case 1:
             armyBuilder.pickAliveCommanders(player1);
+            botArmyBuilder.pickDeadCommanders();
             botArmyBuilder.buildArmy();
+            isRunning = false;
             break;
 
         case 2:
@@ -45,9 +47,6 @@ void Game::run() {
     }
 }
 
-
-void Game::buildArmies(){
-}
 
 void Game::startBattle(){
 }

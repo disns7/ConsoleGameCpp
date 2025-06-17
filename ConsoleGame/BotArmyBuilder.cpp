@@ -8,9 +8,9 @@ BotArmyBuilder::BotArmyBuilder(Player& player)
 
 void BotArmyBuilder::buildArmy() {
     pickDeadUnits();
-    pickDeadCommanders();
     std::cout << "Bot Army building complete.\n";
-    botPlayer.getArmy().printArmy();
+    selectDeadArmy();
+
 }
 
 void BotArmyBuilder::pickDeadUnits() {
@@ -72,5 +72,61 @@ void BotArmyBuilder::pickDeadCommanders() {
             break;
 
         }
+    }
+}
+
+void BotArmyBuilder::selectDeadArmy() {
+    auto& army = botPlayer.getArmy();
+
+    int totalCmdrs = static_cast<int>(army.getCommanders().size());
+    std::uniform_int_distribution<int> commanderCountDist(1, totalCmdrs);
+    int commandersToSelect = commanderCountDist(rng);
+
+    int selectedCmdrs = 0;
+    while (selectedCmdrs < commandersToSelect) {
+        std::uniform_int_distribution<int> commanderTypeDist(1, 2);
+        int type = commanderTypeDist(rng);
+
+        switch (type) {
+        case 1:
+            armyTemplate.tryAddSelectedCommander<LordOfTerror>(botPlayer, "LordOfTerror");
+            break;
+        case 2:
+            armyTemplate.tryAddSelectedCommander<Lich>(botPlayer, "Lich");
+            break;
+        }
+        selectedCmdrs++;
+    }
+
+    int totalUnits = static_cast<int>(army.getUnits().size());
+    std::uniform_int_distribution<int> unitCountDist(2, totalUnits);
+    int unitsToSelect = unitCountDist(rng);
+
+    int selectedUnits = 0;
+    while (selectedUnits < unitsToSelect) {
+        std::uniform_int_distribution<int> unitTypeDist(1, 6);  
+        int type = unitTypeDist(rng);
+
+        switch (type) {
+        case 1:
+            armyTemplate.trySelectUnit<Skeleton>(botPlayer, "Skeleton");
+            break;
+        case 2:
+            armyTemplate.trySelectUnit<Ghost>(botPlayer, "Ghost");
+            break;
+        case 3:
+            armyTemplate.trySelectUnit<Ghoul>(botPlayer, "Ghoul");
+            break;
+        case 4:
+            armyTemplate.trySelectUnit<Revenant>(botPlayer, "Revenant");
+            break;
+        case 5:
+            armyTemplate.trySelectUnit<Dibuk>(botPlayer, "Dibuk");
+            break;
+        case 6:
+            armyTemplate.trySelectUnit<Necromancer>(botPlayer, "Necromancer");
+            break;
+        }
+        selectedUnits++;
     }
 }

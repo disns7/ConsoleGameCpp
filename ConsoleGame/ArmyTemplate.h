@@ -61,6 +61,28 @@ public:
     }
 
     template <typename T>
+    void trySelectUnit(Player& player, const std::string& unitName) {
+        auto& allUnits = player.getArmy().getUnits();
+        auto& selectedUnits = player.getArmy().getSelectedUnits();
+
+        for (const auto& unitPtr : allUnits) {
+            T* casted = dynamic_cast<T*>(unitPtr.get());
+            if (!casted)
+                continue;
+
+            if (std::find(selectedUnits.begin(), selectedUnits.end(), unitPtr.get()) != selectedUnits.end())
+                continue;
+
+            selectedUnits.push_back(unitPtr.get());
+            std::cout << "\nSelected 1 " << unitName << " unit.\n";
+            return;
+        }
+
+        std::cout << "\nNo available " << unitName << " units to select.\n";
+    }
+
+
+    template <typename T>
     void tryAddSelectedCommander(Player& player, const std::string& commanderName) {
         auto& allCommanders = player.getArmy().getCommanders();          
         auto& selectedCommanders = player.getArmy().getSelectedCommanders();  
