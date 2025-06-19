@@ -23,8 +23,14 @@ public:
     Game();
     ~Game();
 
-    void run();                    
-    void startBattle();             
-    void showResults();             
+    void start();                    
+    void startBattle();
+
+    void betweenBattlesMenu();
+    void loadMenu();
+    
+
+    void showResults();
+
     void reset();                   
 };

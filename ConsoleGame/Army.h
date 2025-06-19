@@ -46,6 +46,10 @@ public:
     size_t getUnitsLeftToAdd() const;
     size_t getCommandersLeftToAdd() const;
 
+    void clearSelected();
+    void removeDead();
+
+
     void printArmy() const;
     void printSelectedArmy() const;
 

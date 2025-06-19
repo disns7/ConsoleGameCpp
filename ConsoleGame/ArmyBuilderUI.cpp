@@ -103,37 +103,68 @@ void ArmyBuilder::pickAliveUnits(Player& player){
 
 int ArmyBuilder::aliveUnitPicker(size_t unitsLeftToAdd, int playerGold)
 {
-    std::cout << unitsLeftToAdd << " Units left to pick\n";
-    std::cout << playerGold << " Gold available.\n\n";
-    std::cout << "\n=== PICK UNITS FOR YOUR ARMY ===\n\n";
-    std::cout << "1. Knight - " << Config::GetUnitCost("Knight") << "gold.\n";
-    std::cout << "2. Archer - " << Config::GetUnitCost("Archer") << "gold.\n";
-    std::cout << "3. Infantry - " << Config::GetUnitCost("Infantry") << "gold.\n";
-    std::cout << "4. Healer - " << Config::GetUnitCost("Healer") << "gold.\n";
-    std::cout << "5. Wizard - " << Config::GetUnitCost("Wizard") << "gold.\n";
-    std::cout << "6. Show current army. \n";
-    std::cout << "7. Go to army selection. \n";
-
     int choice;
-    std::cin >> choice;
-    std::cout << "\n";
-    return choice;
+
+    while (true) {
+        std::cout << unitsLeftToAdd << " Units left to pick\n";
+        std::cout << playerGold << " Gold available.\n\n";
+        std::cout << "\n=== PICK UNITS FOR YOUR ARMY ===\n\n";
+        std::cout << "1. Knight - " << Config::GetUnitCost("Knight") << " gold\n";
+        std::cout << "2. Archer - " << Config::GetUnitCost("Archer") << " gold\n";
+        std::cout << "3. Infantry - " << Config::GetUnitCost("Infantry") << " gold\n";
+        std::cout << "4. Healer - " << Config::GetUnitCost("Healer") << " gold\n";
+        std::cout << "5. Wizard - " << Config::GetUnitCost("Wizard") << " gold\n";
+        std::cout << "6. Show current army\n";
+        std::cout << "7. Go to army selection\n\n";
+
+        std::cin >> choice;
+
+        if (std::cin.fail()) {
+            std::cin.clear();
+            std::cin.ignore(); 
+            std::cout << "Invalid input.\n\n";
+        }
+        else if (choice >= 1 && choice <= 7) {
+            std::cout << "\n";
+            return choice;
+        }
+        else {
+            std::cout << "Invalid option.\n\n";
+        }
+    }
 }
 
-int ArmyBuilder::aliveCommanderPicker(size_t commandersLeftToAdd){
 
-    std::cout << commandersLeftToAdd << " Commanders left to pick\n";
-    std::cout << "\n=== PICK COMMANDERS FOR YOUR ARMY ===\n";
-    std::cout << "1. BladeDancer\n";
-    std::cout << "2. UndeadHunter\n";
-    std::cout << "3. Paladin\n";
-    std::cout << "4. Show current army\n";
-    std::cout << "5. Go to picking units\n";
+int ArmyBuilder::aliveCommanderPicker(size_t commandersLeftToAdd)
+{
     int choice;
-    std::cin >> choice;
-    std::cout << "\n";
-    return choice;
+
+    while (true) {
+        std::cout << commandersLeftToAdd << " Commanders left to pick\n";
+        std::cout << "\n=== PICK COMMANDERS FOR YOUR ARMY ===\n";
+        std::cout << "1. BladeDancer\n";
+        std::cout << "2. UndeadHunter\n";
+        std::cout << "3. Paladin\n";
+        std::cout << "4. Show current army\n";
+        std::cout << "5. Go to picking units\n\n";
+
+        std::cin >> choice;
+
+        if (std::cin.fail()) {
+            std::cin.clear();
+            std::cin.ignore();
+            std::cout << "Invalid input.\n\n";
+        }
+        else if (choice >= 1 && choice <= 5) {
+            std::cout << "\n";
+            return choice;
+        }
+        else {
+            std::cout << "Invalid option.\n\n";
+        }
+    }
 }
+
 
 
 

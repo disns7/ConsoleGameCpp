@@ -8,9 +8,12 @@ public:
 	//bool chooseFaction();
 	void displaySaveMenu(const Player& player);
 	void displayLoadMenu(Player& player);
-	void displayBattleResults(const Player& winner, const Player& loser);
+
+	int displayBetweenBattlesMenu();
+
 	void displayInstructions();
 
 	void displaySelectionInstructions(Player& player);
 
+	void displayEndGame(Player& player, Player& botPlayer);
 };

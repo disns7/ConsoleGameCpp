@@ -1,4 +1,6 @@
 #include "Lich.h"
+#include <iostream>
+
 
 Lich::Lich()
     : Commander("Lich", 1500, 100, 1000, 15, ArmorType::Heavy) {
@@ -10,5 +12,9 @@ std::string Lich::getType() const {
 }
 
 void Lich::onSupport(Unit& friendlyTarget) {
-    //wuzdiga murtwi undead unity za 750 mana
+    if (friendlyTarget.isDead() && mana >= 1000) {
+        friendlyTarget.revive(friendlyTarget.getMaxHP());
+        std::cout << "\nLich revived a " << friendlyTarget.getName() << "\n";
+        mana -= 1000;
+    }
 }

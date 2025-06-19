@@ -8,8 +8,8 @@ BotArmyBuilder::BotArmyBuilder(Player& player)
 
 void BotArmyBuilder::buildArmy() {
     pickDeadUnits();
-    std::cout << "Bot Army building complete.\n";
     selectDeadArmy();
+    std::cout << "\nBot Army building complete.\n";
 
 }
 
@@ -77,8 +77,14 @@ void BotArmyBuilder::pickDeadCommanders() {
 void BotArmyBuilder::selectDeadArmy() {
     auto& army = botPlayer.getArmy();
 
+    bool success = false;
+
     int totalCmdrs = static_cast<int>(army.getCommanders().size());
-    std::uniform_int_distribution<int> commanderCountDist(2, totalCmdrs);
+    if (totalCmdrs == 0) {
+        std::cout << "No commanders to select from.\n";
+        return;
+    }
+    std::uniform_int_distribution<int> commanderCountDist(1, totalCmdrs);
     int commandersToSelect = commanderCountDist(rng);
 
     int selectedCmdrs = 0;
@@ -88,21 +94,27 @@ void BotArmyBuilder::selectDeadArmy() {
 
         switch (type) {
         case 1:
-            armyTemplate.tryAddSelectedCommander<LordOfTerror>(botPlayer, "LordOfTerror");
+            success = armyTemplate.tryAddSelectedCommander<LordOfTerror>(botPlayer, "LordOfTerror");
             break;
         case 2:
-            armyTemplate.tryAddSelectedCommander<Lich>(botPlayer, "Lich");
+            success = armyTemplate.tryAddSelectedCommander<Lich>(botPlayer, "Lich");
             break;
         }
-        selectedCmdrs++;
+        if (success) {
+            selectedCmdrs++;
+            success = false;
+        }
     }
 
     int totalUnits = static_cast<int>(army.getUnits().size());
-    std::uniform_int_distribution<int> unitCountDist(3, totalUnits);
+    if (totalUnits == 0) {
+        std::cout << "Not enough units to select from.\n";
+        return;
+    }
+    std::uniform_int_distribution<int> unitCountDist(1, totalUnits);
     int unitsToSelect = unitCountDist(rng);
-    //int unitsToSelect = 0;
 
-    bool success = false;
+    
 
     int selectedUnits = 0;
     while (selectedUnits < unitsToSelect) {

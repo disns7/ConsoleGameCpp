@@ -10,7 +10,7 @@ Unit::Unit(const std::string& name, double hp, int attack, int mana, int armorVa
 
 const void Unit::attack(Unit& target) {
     if (!isDead()) {
-        std::cout << "\n" << name << " attacks " << target.getName() << " for " << attackPower * getArmorMultiplier() << " damage!\n";
+        //std::cout << "\n" << name << " attacks " << target.getName() << " for " << attackPower * getArmorMultiplier() << " damage!\n";
         target.takeDamage(attackPower);
         onAttack(target);
     }
@@ -44,7 +44,6 @@ void Unit::revive(double amount)
     if (isDead()) {
         hp = amount;
         if (hp > maxHP) hp = maxHP;
-        std::cout << getName() << " was revived with " << hp << " HP!\n";
     }
 }
 

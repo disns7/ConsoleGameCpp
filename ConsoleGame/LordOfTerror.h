@@ -6,6 +6,6 @@ class LordOfTerror : public Commander {
 public:
     LordOfTerror();
     std::string getType() const override;
-    void onSupport(Unit& friendlyTarget) override;
+    void useAbility(Player& allyPlayer, Player& enemyPlayer) override;
 
 };

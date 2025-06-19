@@ -14,7 +14,7 @@ public:
             player.getArmy().addUnit(std::make_unique<T>());
         }
         catch (const std::runtime_error& e) {
-            std::cout << "\nFailed to add " << unitName << ": " << e.what() << '\n';
+            //std::cout << "\nFailed to add " << unitName << ": " << e.what() << '\n';
         }
     }
 
@@ -24,7 +24,7 @@ public:
             player.getArmy().addCommander(std::make_unique<T>());
         }
         catch (const std::runtime_error& e) {
-            std::cout << "\nFailed to add " << commanderName << ": " << e.what() << '\n';
+            //std::cout << "\nFailed to add " << commanderName << ": " << e.what() << '\n';
         }
     }
 
@@ -65,17 +65,17 @@ public:
                 continue;
 
             selectedUnits.push_back(unitPtr.get());
-            std::cout << "\nSelected 1 " << unitName << " unit.\n";
+           // std::cout << "\nSelected 1 " << unitName << " unit.\n";
             return true;
         }
 
+        //std::cout << "\nNo available " << unitName << " units to select.\n";
         return false;
-        std::cout << "\nNo available " << unitName << " units to select.\n";
     }
 
 
     template <typename T>
-    void tryAddSelectedCommander(Player& player, const std::string& commanderName) {
+    bool tryAddSelectedCommander(Player& player, const std::string& commanderName) {
         auto& allCommanders = player.getArmy().getCommanders();          
         auto& selectedCommanders = player.getArmy().getSelectedCommanders();  
 
@@ -90,11 +90,11 @@ public:
                 continue;
 
             selectedCommanders.push_back(commanderPtr);
-            std::cout << "\nAdded " << commanderName << " to the selected commanders.\n";
-            return;  
+            //std::cout << "\nAdded " << commanderName << " to the selected commanders.\n";
+            return true;  
         }
-
-        std::cout << "\nNo available commanders of type " << commanderName << " to select.\n";
+        //std::cout << "\nNo available commanders of type " << commanderName << " to select.\n";
+        return false;
     }
 
 };

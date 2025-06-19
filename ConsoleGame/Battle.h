@@ -20,6 +20,6 @@ public:
 
 	bool deadCheck(Player& player);
 
-
+	void afterBattle(Player& player, Player& botPlayer);
 
 };

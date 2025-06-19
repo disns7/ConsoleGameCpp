@@ -121,6 +121,48 @@ size_t Army::getCommandersLeftToAdd() const
     return commandersLeftToAdd;
 }
 
+void Army::clearSelected() 
+{
+    selectedUnits.clear();
+    selectedCommanders.clear();
+}
+
+void Army::removeDead() 
+{
+    selectedUnits.erase(
+        std::remove_if(selectedUnits.begin(), selectedUnits.end(),
+            [](Unit* unit) { return unit->isDead(); }),
+        selectedUnits.end());
+
+    selectedCommanders.erase(
+        std::remove_if(selectedCommanders.begin(), selectedCommanders.end(),
+            [](Commander* cmdr) { return cmdr->isDead(); }),
+        selectedCommanders.end());
+
+    size_t oldUnitCount = units.size();
+    units.erase(
+        std::remove_if(units.begin(), units.end(),
+            [](const std::unique_ptr<Unit>& unit) {
+                return unit->isDead();
+            }),
+        units.end());
+    size_t removedUnits = oldUnitCount - units.size();
+    unitsLeftToAdd += removedUnits;
+
+    size_t oldCommanderCount = commanders.size();
+    commanders.erase(
+        std::remove_if(commanders.begin(), commanders.end(),
+            [](const std::unique_ptr<Commander>& commander) {
+                return commander->isDead();
+            }),
+        commanders.end());
+    size_t removedCommanders = oldCommanderCount - commanders.size();
+    commandersLeftToAdd += removedCommanders;
+}
+
+
+
+
 void Army::printArmy() const {
     std::cout << "\n--- Units ---\n";
     for (const auto& unit : units) {

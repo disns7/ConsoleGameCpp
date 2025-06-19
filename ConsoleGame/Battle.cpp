@@ -52,34 +52,24 @@ void Battle::startBattle(Player& player, Player& botPlayer)
         // adds mana to all units each rotation
         addManaToAll(player, botPlayer);
 	}
+    afterBattle(player, botPlayer);
 
-    botPlayer.getArmy().clearTempUnits();
-    player.getArmy().clearTempUnits();
-
-    if (deadCheck(player)) {
-        std::cout << "Bot wins a point!\n";
-        botPlayer.addPoint();
-    }
-    else {
-        std::cout << "Player wins a point!\n";
-        player.addPoint();
-    }
 }
 
 void Battle::basicAttackCommanders(Player& attPlayer, Player& defPlayer)
 {
-    for (Commander* botCommander : attPlayer.getArmy().getSelectedCommanders()) {
-        if (botCommander->isDead()) continue;
+    for (Commander* Commanders : attPlayer.getArmy().getSelectedCommanders()) {
+        if (Commanders->isDead()) continue;
 
         for (Unit* targetUnit : defPlayer.getArmy().getSelectedUnits()) {
             if (!targetUnit->isDead()) {
-                botCommander->attack(*targetUnit);
+                Commanders->attack(*targetUnit);
             }
         }
 
         for (Commander* targetCommander : defPlayer.getArmy().getSelectedCommanders()) {
             if (!targetCommander->isDead()) {
-                botCommander->attack(*targetCommander);
+                Commanders->attack(*targetCommander);
             }
         }
     }
@@ -108,8 +98,9 @@ void Battle::specialAbbilityCommanders(Player& allyPlayer, Player& enemyPlayer)
 {
     std::vector<Unit*> supporters = allyPlayer.getArmy().getSelectedUnits();
 
-    for (Commander* botCommander : allyPlayer.getArmy().getSelectedCommanders()) {
-        botCommander->useAbility(allyPlayer, enemyPlayer);
+    for (Commander* commander : allyPlayer.getArmy().getSelectedCommanders()) {
+        if (commander->isDead()) continue;
+        commander->useAbility(allyPlayer, enemyPlayer);
     }
 }
 
@@ -118,6 +109,7 @@ void Battle::specialAbbilityUnits(Player& allyPlayer, Player& enemyPlayer)
     std::vector<Unit*> supporters = allyPlayer.getArmy().getSelectedUnits();
 
     for (Unit* supporter : supporters) {
+        if (supporter->isDead()) continue;
         supporter->specialAbility(allyPlayer, enemyPlayer);
     }
 }
@@ -179,7 +171,7 @@ void Battle::addManaToAll(Player& player, Player& botPlayer)
             targetUnit->addMana(Config::BONUS_MANA_PER_HIT);
         }
     }
-    for (Commander* targetUnit : player.getArmy().getSelectedCommanders()) {
+    for (Commander* targetUnit : botPlayer.getArmy().getSelectedCommanders()) {
         if (!targetUnit->isDead()) {
             targetUnit->addMana(Config::BONUS_MANA_PER_HIT);
         }
@@ -199,5 +191,31 @@ bool Battle::deadCheck(Player& player)
         }
     }
     return true;  
+}
+
+void Battle::afterBattle(Player& player, Player& botPlayer)
+{
+    botPlayer.getArmy().printSelectedArmy();
+    player.getArmy().printSelectedArmy();
+    if (deadCheck(player)) {
+        std::cout << "Bot wins a point!\n";
+        botPlayer.addPoint();
+    }
+    else if (deadCheck(botPlayer)) {
+        std::cout << "Player wins a point!\n";
+        player.addPoint();
+    }
+    else {
+        std::cout << "Battle ended with no clear winner.\n";
+    }
+    botPlayer.getArmy().clearTempUnits();
+    player.getArmy().clearTempUnits();
+    botPlayer.getArmy().clearSelected();
+    botPlayer.getArmy().removeDead();
+    player.getArmy().clearSelected();
+    player.getArmy().removeDead();
+    player.addGold(Config::BONUS_GOLD_PER_DUEL);
+    botPlayer.addGold(Config::BONUS_GOLD_PER_DUEL);
+
 }
 

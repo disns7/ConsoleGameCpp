@@ -3,16 +3,56 @@
 
 
 int Menu::displayMainMenu() {
+    int choice;
 
+    while (true) {
         std::cout << "=== Main Menu ===\n";
         std::cout << "1. New Game\n";
         std::cout << "2. Load Game\n";
         std::cout << "3. Display Instructions\n";
         std::cout << "4. Exit\n";
-        int choice;
+
         std::cin >> choice;
-        std::cout << "\n";
-        return choice;
+
+        if (std::cin.fail()) {
+            std::cin.clear(); 
+            std::cin.ignore(); 
+            std::cout << "Invalid input.\n\n";
+        }
+        else if (choice >= 1 && choice <= 4) {
+            return choice;
+        }
+        else {
+            std::cout << "Wrong number, try again.\n\n";
+        }
+    }
+}
+
+int Menu::displayBetweenBattlesMenu()
+{
+    int choice;
+
+    while (true) {
+        std::cout << "=== Menu ===\n";
+        std::cout << "1. Continue\n";
+        std::cout << "2. Save game\n";
+        std::cout << "3. Display Army\n";
+        std::cout << "4. Exit\n";
+
+        std::cin >> choice;
+
+        if (std::cin.fail()) {
+            std::cin.clear();
+            std::cin.ignore();
+            std::cout << "Invalid input.\n\n";
+        }
+        else if (choice >= 1 && choice <= 4) {
+            return choice;
+        }
+        else {
+            std::cout << "Wrong number, try again.\n\n";
+        }
+    }
 }
 
 
@@ -24,8 +64,7 @@ void Menu::displayLoadMenu(Player& player){
 
 }
 
-void Menu::displayBattleResults(const Player& winner, const Player& loser){
-}
+
 
 void Menu::displayInstructions() {
     std::cout << "\n----INSTRUCTIONS----\n";
@@ -49,4 +88,15 @@ void Menu::displaySelectionInstructions(Player& player)
     std::cout << "Type show to see both your selected army for battler and your whole army.\n";
     std::cout << "\n";
 
+}
+
+void Menu::displayEndGame(Player& player, Player& botPlayer)
+{
+    if (botPlayer.getPoints() > player.getPoints()) {
+        std::cout << "\n\n\n |||===============YOU LOST===============|||";
+        std::cout << "\n\n Better luck next time! Thanks for playing!";
+    } else {
+        std::cout << "\n\n\n |||===============YOU WON===============|||";
+        std::cout << "\n\n Thanks for playing!";
+    }
 }

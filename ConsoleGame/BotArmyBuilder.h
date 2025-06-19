@@ -14,8 +14,6 @@
 #include "Dibuk.h"
 #include "Necromancer.h"
 
-#include "ArmyTemplate.h"
-
 #include <random>
 
 class BotArmyBuilder {
