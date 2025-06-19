@@ -49,6 +49,36 @@ void Army::removeFromSelectedUnits(size_t index) {
     }
 }
 
+void Army::addTemporaryUnit(std::unique_ptr<Unit> unit) {
+    std::cout << "Adding temporary unit: " << unit->getName() << "\n";
+    selectedUnits.push_back(unit.get());  
+    tempUnits.push_back(std::move(unit)); 
+}
+
+void Army::clearTempUnits() {
+    for (auto it = selectedUnits.begin(); it != selectedUnits.end(); ) {
+        Unit* unitPtr = *it;
+        bool found = false;
+
+        for (const auto& tempPtr : tempUnits) {
+            if (tempPtr.get() == unitPtr) {
+                found = true;
+                break;
+            }
+        }
+
+        if (found) {
+            it = selectedUnits.erase(it);
+        }
+        else {
+            ++it;
+        }
+    }
+
+    tempUnits.clear();
+}
+
+
  std::vector<std::unique_ptr<Unit>>& Army::getUnits() 
 {
     return units;
@@ -57,6 +87,11 @@ void Army::removeFromSelectedUnits(size_t index) {
  std::vector<std::unique_ptr<Commander>>& Army::getCommanders()
  {
      return commanders;
+ }
+
+ std::vector<std::unique_ptr<Unit>>& Army::getTempUnits()
+ {
+     return tempUnits;
  }
 
  std::vector<Unit*>& Army::getSelectedUnits()  {

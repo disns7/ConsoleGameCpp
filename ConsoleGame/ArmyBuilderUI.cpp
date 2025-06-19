@@ -85,7 +85,7 @@ void ArmyBuilder::pickAliveUnits(Player& player){
                 if (!unit->isDead()) {
                     unit->attack(target);
                     unit->onSupport(target);
-                    unit->addMana(75);
+                    unit->addMana(Config::BONUS_MANA_PER_HIT);
                 }
             }
             player.getArmy().printArmy();

@@ -4,6 +4,7 @@
 #include "Menu.h"
 #include "ArmyBuilderUI.h"
 #include "BotArmyBuilder.h"
+#include "Battle.h"
 
 
 class Game {
@@ -13,6 +14,7 @@ private:
     BotArmyBuilder botArmyBuilder;  
     ArmyBuilder armyBuilder;
     Menu menu;
+    Battle battle;
     bool isRunning;
 
 
@@ -22,7 +24,6 @@ public:
     ~Game();
 
     void run();                    
-    void buildArmies();             
     void startBattle();             
     void showResults();             
     void reset();                   

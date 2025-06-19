@@ -49,19 +49,10 @@ public:
             addedCount++;
         }
 
-        if (addedCount == 0) {
-            std::cout << "\nNo available units of requested type to select.\n";
-        }
-        else if (addedCount < countToAdd) {
-            std::cout << "\nOnly " << addedCount << " units of requested type were available and selected.\n";
-        }
-        else {
-            std::cout << "\nSuccessfully selected " << addedCount << " units.\n";
-        }
     }
 
     template <typename T>
-    void trySelectUnit(Player& player, const std::string& unitName) {
+    bool trySelectUnit(Player& player, const std::string& unitName) {
         auto& allUnits = player.getArmy().getUnits();
         auto& selectedUnits = player.getArmy().getSelectedUnits();
 
@@ -75,9 +66,10 @@ public:
 
             selectedUnits.push_back(unitPtr.get());
             std::cout << "\nSelected 1 " << unitName << " unit.\n";
-            return;
+            return true;
         }
 
+        return false;
         std::cout << "\nNo available " << unitName << " units to select.\n";
     }
 

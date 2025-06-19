@@ -10,13 +10,13 @@ Unit::Unit(const std::string& name, double hp, int attack, int mana, int armorVa
 
 const void Unit::attack(Unit& target) {
     if (!isDead()) {
-        std::cout << name << " attacks " << target.getName() << " for " << attackPower << " damage!\n";
+        std::cout << "\n" << name << " attacks " << target.getName() << " for " << attackPower * getArmorMultiplier() << " damage!\n";
         target.takeDamage(attackPower);
         onAttack(target);
     }
 }
 
-void Unit::takeDamage(int amount) {
+void Unit::takeDamage(double amount) {
     if (armorValue > 0) {
         hp = hp - (amount* getArmorMultiplier());
         armorValue--;
@@ -26,7 +26,7 @@ void Unit::takeDamage(int amount) {
     if (hp < 0) hp = 0;
 }
 
-void Unit::heal(int amount) {
+void Unit::heal(double amount) {
     if (isDead()) return; 
     hp += amount;
     if (hp > maxHP) hp = maxHP;
@@ -37,6 +37,15 @@ void Unit::addMana(int amount)
     if (isDead()) return;
     mana += amount;    
     if (mana > maxMana) mana = maxMana;
+}
+
+void Unit::revive(double amount)
+{
+    if (isDead()) {
+        hp = amount;
+        if (hp > maxHP) hp = maxHP;
+        std::cout << getName() << " was revived with " << hp << " HP!\n";
+    }
 }
 
 const double Unit::getMaxHP() const

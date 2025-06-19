@@ -8,8 +8,10 @@ public:
     static constexpr int BONUS_GOLD_PER_DUEL = 1000;
     static constexpr int MAX_NORMAL_UNITS = 10;
     static constexpr int MAX_COMMANDER_UNITS = 5;
-    
+    static constexpr int BONUS_MANA_PER_HIT = 75;
 
+
+    
     static int GetUnitCost(const std::string& unitName) {
         if (unitName == "Infantry") return 250;
         if (unitName == "Archer") return 300;

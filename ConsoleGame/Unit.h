@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 
+class Player;
+
 enum class ArmorType {
     Unarmored,
     Leather,
@@ -28,12 +30,14 @@ public:
     virtual ~Unit() = default;
 
     const void attack(Unit& target);
-    void takeDamage(int amount);
-    void heal(int amount);
+    void takeDamage(double amount);
+    void heal(double amount);
     void addMana(int amount);
+    void revive(double amount);
 
     virtual void onAttack(Unit& enemyTarget) {};
-    virtual void onSupport(Unit& friendlyTarget) {}
+    virtual void onSupport(Unit& friendlyTarget) {};
+    virtual void specialAbility(Player& allyPlayer, Player& enemyPLayer) {};
 
     const double getMaxHP() const;
     bool isDead() const;

@@ -1,4 +1,6 @@
 #include "UndeadHunter.h"
+#include "Player.h"
+#include <iostream>
 
 UndeadHunter::UndeadHunter()
     : Commander("UndeadHunter", 2000,  75, 1500, 17, ArmorType::Heavy) {
@@ -9,6 +11,17 @@ std::string UndeadHunter::getType() const {
     return "UndeadHunter";
 }
 
-void UndeadHunter::onAttack(Unit& enemyTarget) {
-    // unishtojawa enemy commander ako ima takuw za 1000 mana
+
+void UndeadHunter::useAbility(Player& allyPlayer, Player& enemyPlayer) 
+{
+    if (mana>=1000) {
+        for (Commander* targetUnit : enemyPlayer.getArmy().getSelectedCommanders()) {
+            if (!targetUnit->isDead() && mana>=1500) {
+                targetUnit->takeDamage(targetUnit->getMaxHP()*targetUnit->getMaxHP());
+                std::cout << "UndeadHunter has demolished a " << targetUnit->getName() << "\n";
+                mana -= 1500;
+            }
+        }
+    }
 }
+

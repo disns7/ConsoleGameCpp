@@ -25,6 +25,9 @@ void Game::run() {
             armyBuilder.pickAliveCommanders(player1);
             botArmyBuilder.pickDeadCommanders();
             botArmyBuilder.buildArmy();
+            botPlayer.getArmy().printArmy();
+            botPlayer.getArmy().printSelectedArmy();
+            startBattle();
             isRunning = false;
             break;
 
@@ -49,6 +52,9 @@ void Game::run() {
 
 
 void Game::startBattle(){
+    battle.startBattle(player1, botPlayer);
+    botPlayer.getArmy().printSelectedArmy();
+    player1.getArmy().printSelectedArmy();
 }
 
 void Game::showResults(){

@@ -1,4 +1,5 @@
 #include "Paladin.h"
+#include <iostream>
 
 Paladin::Paladin()
     : Commander("Paladin", 5000, 250, 3000, 20, ArmorType::Heavy) {
@@ -10,5 +11,9 @@ std::string Paladin::getType() const {
 }
 
 void Paladin::onSupport(Unit& friendlyTarget) {
-    //heal/revive
+
+    if (friendlyTarget.isDead() && mana >=500.0) {
+        friendlyTarget.revive(friendlyTarget.getMaxHP());
+        std::cout << "Paladin revived a " << friendlyTarget.getName() << "\n";
+    }
 }

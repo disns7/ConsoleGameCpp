@@ -19,7 +19,6 @@ void BotArmyBuilder::pickDeadUnits() {
     while (botPlayer.getArmy().getUnitsLeftToAdd() > 0) {
         int gold = botPlayer.getGold();
         int choice = unitDist(rng);
-
         switch (choice) {
         case 1:
             if (gold >= Config::GetUnitCost("Skeleton"))
@@ -79,7 +78,7 @@ void BotArmyBuilder::selectDeadArmy() {
     auto& army = botPlayer.getArmy();
 
     int totalCmdrs = static_cast<int>(army.getCommanders().size());
-    std::uniform_int_distribution<int> commanderCountDist(1, totalCmdrs);
+    std::uniform_int_distribution<int> commanderCountDist(2, totalCmdrs);
     int commandersToSelect = commanderCountDist(rng);
 
     int selectedCmdrs = 0;
@@ -99,8 +98,11 @@ void BotArmyBuilder::selectDeadArmy() {
     }
 
     int totalUnits = static_cast<int>(army.getUnits().size());
-    std::uniform_int_distribution<int> unitCountDist(2, totalUnits);
+    std::uniform_int_distribution<int> unitCountDist(3, totalUnits);
     int unitsToSelect = unitCountDist(rng);
+    //int unitsToSelect = 0;
+
+    bool success = false;
 
     int selectedUnits = 0;
     while (selectedUnits < unitsToSelect) {
@@ -109,24 +111,27 @@ void BotArmyBuilder::selectDeadArmy() {
 
         switch (type) {
         case 1:
-            armyTemplate.trySelectUnit<Skeleton>(botPlayer, "Skeleton");
+            success = armyTemplate.trySelectUnit<Skeleton>(botPlayer, "Skeleton");
             break;
         case 2:
-            armyTemplate.trySelectUnit<Ghost>(botPlayer, "Ghost");
+            success = armyTemplate.trySelectUnit<Ghost>(botPlayer, "Ghost");
             break;
         case 3:
-            armyTemplate.trySelectUnit<Ghoul>(botPlayer, "Ghoul");
+            success = armyTemplate.trySelectUnit<Ghoul>(botPlayer, "Ghoul");
             break;
         case 4:
-            armyTemplate.trySelectUnit<Revenant>(botPlayer, "Revenant");
+            success = armyTemplate.trySelectUnit<Revenant>(botPlayer, "Revenant");
             break;
         case 5:
-            armyTemplate.trySelectUnit<Dibuk>(botPlayer, "Dibuk");
+            success = armyTemplate.trySelectUnit<Dibuk>(botPlayer, "Dibuk");
             break;
         case 6:
-            armyTemplate.trySelectUnit<Necromancer>(botPlayer, "Necromancer");
+            success = armyTemplate.trySelectUnit<Necromancer>(botPlayer, "Necromancer");
             break;
         }
-        selectedUnits++;
+        if (success) {
+            selectedUnits++;
+            success = false;
+        }
     }
 }

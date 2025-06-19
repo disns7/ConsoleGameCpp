@@ -9,6 +9,7 @@ class Army {
 private:
     std::vector<std::unique_ptr<Unit>> units;
     std::vector<std::unique_ptr<Commander>> commanders;
+    std::vector<std::unique_ptr<Unit>> tempUnits;
 
     std::vector<Unit*> selectedUnits;
     std::vector<Commander*> selectedCommanders;
@@ -30,10 +31,15 @@ public:
     void addToSelectedUnits(Unit* unit);
     void removeFromSelectedUnits(size_t index);
 
+    void addTemporaryUnit(std::unique_ptr<Unit> unit);
+    void clearTempUnits();
+
+
      std::vector<Unit*>& getSelectedUnits();
      std::vector<Commander*>& getSelectedCommanders();
      std::vector<std::unique_ptr<Unit>>& getUnits() ;
      std::vector<std::unique_ptr<Commander>>& getCommanders();
+     std::vector<std::unique_ptr<Unit>>& getTempUnits();
 
     size_t getUnitCount() const;
     size_t getCommanderCount() const;
