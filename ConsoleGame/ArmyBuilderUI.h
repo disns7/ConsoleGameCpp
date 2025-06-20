@@ -32,7 +32,6 @@ public:
 	void selectAliveUnits(Player& player, std::string unitName, int unitCount);
 	void selectAliveCommanders(Player& player, std::string commanderName);
 
-	void removeFromSelectedAliveUnits(Player& player);
 };
 
 

@@ -58,6 +58,7 @@
     <ClInclude Include="BladeDancer.h" />
     <ClInclude Include="BotArmyBuilder.h" />
     <ClInclude Include="Commander.h" />
+    <ClInclude Include="CommanderIncludes.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="DeadKnight.h" />
     <ClInclude Include="Dibuk.h" />

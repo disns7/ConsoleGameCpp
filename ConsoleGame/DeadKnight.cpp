@@ -1,4 +1,5 @@
 #include "DeadKnight.h"
+#include <iostream>
 
 DeadKnight::DeadKnight()
     : Commander("DeadKnight", 2500, 150, 1000, 15, ArmorType::Heavy) {
@@ -10,5 +11,9 @@ std::string DeadKnight::getType() const {
 }
 
 void DeadKnight::onSupport(Unit& friendlyTarget) {
-    //heal za 350 mana? 25% shans za spawn sled smurt na knight
+    if (mana >= 400 && !friendlyTarget.isDead() && friendlyTarget.getHP() < friendlyTarget.getMaxHP() - 150) {
+        friendlyTarget.heal(250);
+        std::cout << "Healer healed 100HP to " << friendlyTarget.getName() << "\n";
+        mana -= 400;
+    }
 }

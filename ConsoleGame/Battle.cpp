@@ -44,7 +44,7 @@ void Battle::startBattle(Player& player, Player& botPlayer)
         onSupportUnits(botPlayer);
 
         //special abilities from bot units
-        specialAbbilityUnits(player, botPlayer);
+        specialAbbilityUnits(botPlayer, player);
  
         //spec ability from bot commanders
         specialAbbilityCommanders(botPlayer, player);
@@ -195,8 +195,10 @@ bool Battle::deadCheck(Player& player)
 
 void Battle::afterBattle(Player& player, Player& botPlayer)
 {
+    std::cout << "\n\n\n";
     botPlayer.getArmy().printSelectedArmy();
     player.getArmy().printSelectedArmy();
+    std::cout << "\n\n\n";
     if (deadCheck(player)) {
         std::cout << "Bot wins a point!\n";
         botPlayer.addPoint();

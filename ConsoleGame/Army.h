@@ -39,6 +39,7 @@ public:
      std::vector<Commander*>& getSelectedCommanders();
      std::vector<std::unique_ptr<Unit>>& getUnits() ;
      std::vector<std::unique_ptr<Commander>>& getCommanders();
+     const std::vector<std::unique_ptr<Commander>>& getCommanders() const;
      std::vector<std::unique_ptr<Unit>>& getTempUnits();
 
     size_t getUnitCount() const;
@@ -49,6 +50,8 @@ public:
     void clearSelected();
     void removeDead();
 
+    void clearCommanders();
+    void clearUnits();
 
     void printArmy() const;
     void printSelectedArmy() const;

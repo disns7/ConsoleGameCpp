@@ -12,8 +12,9 @@ std::string Paladin::getType() const {
 
 void Paladin::onSupport(Unit& friendlyTarget) {
 
-    if (friendlyTarget.isDead() && mana >=500.0) {
+    if (friendlyTarget.isDead() && mana >=500.0 ) {
         friendlyTarget.revive(friendlyTarget.getMaxHP());
         std::cout << "Paladin revived a " << friendlyTarget.getName() << "\n";
+        mana -= 500;
     }
 }

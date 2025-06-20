@@ -47,6 +47,11 @@ void Unit::revive(double amount)
     }
 }
 
+const int Unit::getMana() const
+{
+    return mana;
+}
+
 const double Unit::getMaxHP() const
 {
     return maxHP;
@@ -75,6 +80,25 @@ const ArmorType Unit::getArmorType() const{
 
 const int Unit::getArmorValue() const{
     return armorValue;
+}
+
+void Unit::setHp(double HP)
+{
+    hp = HP;
+    if (hp > maxHP) hp = maxHP;
+    if (hp < 0) hp = 0;
+}
+
+void Unit::setMana(int mana)
+{
+    this->mana = mana;
+    if (mana > maxMana) mana = maxMana;
+    if (mana < 0) mana = 0;
+}
+void Unit::setArmorValue(int armorValue)
+{
+    this->armorValue = armorValue;
+    if (armorValue < 0) armorValue = 0;
 }
 
 const void Unit::unitInfo(){

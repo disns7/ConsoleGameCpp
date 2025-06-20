@@ -16,18 +16,23 @@ std::string Necromancer::getType() const {
 }
 
 void Necromancer::specialAbility(Player& allyPlayer, Player& enemyPlayer) {
-    if (mana >= 200) {
+    std::cout << "Got in the special ability\n";
+    if (mana == 200) {
+        std::cout << "Has 200 mana\n";
+
         int deadCount = 0;
         for (Unit* targetUnit : enemyPlayer.getArmy().getSelectedUnits()) {
             if (targetUnit->isDead()) {
                 deadCount++;
+                std::cout << "One dead found\n";
+
             }
         }
         if (deadCount >= 3) {
             for (int i = 0; i < 3; ++i) {
                 auto skeleton = std::make_unique<Skeleton>();
                 allyPlayer.getArmy().addTemporaryUnit(std::move(skeleton));
-                std::cout << "created";
+                std::cout << "Created";
             }
             mana -= 200;
             std::cout << "A necromancer summoned 3 skeletons !\n";

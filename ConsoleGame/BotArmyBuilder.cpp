@@ -19,6 +19,7 @@ void BotArmyBuilder::pickDeadUnits() {
     while (botPlayer.getArmy().getUnitsLeftToAdd() > 0) {
         int gold = botPlayer.getGold();
         int choice = unitDist(rng);
+
         switch (choice) {
         case 1:
             if (gold >= Config::GetUnitCost("Skeleton"))
@@ -113,8 +114,6 @@ void BotArmyBuilder::selectDeadArmy() {
     }
     std::uniform_int_distribution<int> unitCountDist(1, totalUnits);
     int unitsToSelect = unitCountDist(rng);
-
-    
 
     int selectedUnits = 0;
     while (selectedUnits < unitsToSelect) {

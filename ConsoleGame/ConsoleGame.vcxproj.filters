@@ -210,5 +210,8 @@
     <ClInclude Include="Battle.h">
       <Filter>core</Filter>
     </ClInclude>
+    <ClInclude Include="CommanderIncludes.h">
+      <Filter>utils</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

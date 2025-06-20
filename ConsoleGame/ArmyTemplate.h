@@ -13,8 +13,8 @@ public:
             player.spendGold(cost);
             player.getArmy().addUnit(std::make_unique<T>());
         }
-        catch (const std::runtime_error& e) {
-            //std::cout << "\nFailed to add " << unitName << ": " << e.what() << '\n';
+        catch (const std::exception&) {
+            //std::cout << "\nFailed to add " << unitName  << '\n';
         }
     }
 
@@ -23,15 +23,14 @@ public:
         try {
             player.getArmy().addCommander(std::make_unique<T>());
         }
-        catch (const std::runtime_error& e) {
-            //std::cout << "\nFailed to add " << commanderName << ": " << e.what() << '\n';
+        catch (const std::exception&) {
+            //std::cout << "\nFailed to add " << commanderName  << '\n';
         }
     }
 
     template <typename T>
     void trySelectUnits(Player& player, int countToAdd) {
         
-
         int addedCount = 0;
 
         for (const auto& unitPtr : player.getArmy().getUnits()) {

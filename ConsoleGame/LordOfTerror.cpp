@@ -27,5 +27,4 @@ void LordOfTerror::useAbility(Player& allyPlayer, Player& enemyPlayer)
         std::cout << "The Lord Of Terror has summoned a NECROMANCER!\n";
         mana -= 400;
     }
-
 }

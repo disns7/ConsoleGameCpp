@@ -50,13 +50,17 @@ public:
         InvalidCommander = -1,
         PaladinType,
         BladeDancerType,
-        UndeadHunterType
+        UndeadHunterType,
+        LichType,
+        LordOfTerrorType
     };
 
     static CommanderType GetCommanderType(const std::string& name) {
         if (name == "paladin") return PaladinType;
         if (name == "bladedancer") return BladeDancerType;
         if (name == "undeadhunter") return UndeadHunterType;
+        if (name == "lich") return LichType;
+        if (name == "lordofterror") return LordOfTerrorType;
         return InvalidCommander;
     }
 

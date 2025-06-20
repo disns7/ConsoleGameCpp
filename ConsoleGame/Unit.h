@@ -39,6 +39,7 @@ public:
     virtual void onSupport(Unit& friendlyTarget) {};
     virtual void specialAbility(Player& allyPlayer, Player& enemyPLayer) {};
 
+    const int getMana() const;
     const double getMaxHP() const;
     bool isDead() const;
     const std::string getName() const;
@@ -46,6 +47,10 @@ public:
     const int getCost() const;
     const ArmorType getArmorType() const;
     const int getArmorValue() const;
+
+    void setHp(double HP);
+    void setMana(int mana);
+    void setArmorValue(int armorValue);
 
     const void unitInfo();
 

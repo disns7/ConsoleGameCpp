@@ -37,7 +37,8 @@ int Menu::displayBetweenBattlesMenu()
         std::cout << "1. Continue\n";
         std::cout << "2. Save game\n";
         std::cout << "3. Display Army\n";
-        std::cout << "4. Exit\n";
+        std::cout << "4. Restart\n";
+        std::cout << "5. Exit\n";
 
         std::cin >> choice;
 
@@ -46,7 +47,7 @@ int Menu::displayBetweenBattlesMenu()
             std::cin.ignore();
             std::cout << "Invalid input.\n\n";
         }
-        else if (choice >= 1 && choice <= 4) {
+        else if (choice >= 1 && choice <= 5) {
             return choice;
         }
         else {

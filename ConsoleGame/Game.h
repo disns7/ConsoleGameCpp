@@ -27,8 +27,9 @@ public:
     void startBattle();
 
     void betweenBattlesMenu();
-    void loadMenu();
     
+    void saveGame();
+    void loadGame();
 
     void showResults();
 

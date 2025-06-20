@@ -50,7 +50,7 @@ void Army::removeFromSelectedUnits(size_t index) {
 }
 
 void Army::addTemporaryUnit(std::unique_ptr<Unit> unit) {
-    std::cout << "Adding temporary unit: " << unit->getName() << "\n";
+    
     selectedUnits.push_back(unit.get());  
     tempUnits.push_back(std::move(unit)); 
 }
@@ -85,6 +85,11 @@ void Army::clearTempUnits() {
 }
 
  std::vector<std::unique_ptr<Commander>>& Army::getCommanders()
+ {
+     return commanders;
+ }
+
+ const std::vector<std::unique_ptr<Commander>>& Army::getCommanders() const
  {
      return commanders;
  }
@@ -160,7 +165,20 @@ void Army::removeDead()
     commandersLeftToAdd += removedCommanders;
 }
 
+void Army::clearCommanders()
+{
+    selectedCommanders.clear(); 
+    commanders.clear();  
+    commandersLeftToAdd = Config::MAX_COMMANDER_UNITS;
+    
+}
 
+void Army::clearUnits()
+{
+    selectedUnits.clear();
+    units.clear();
+    unitsLeftToAdd = Config::MAX_NORMAL_UNITS;
+}
 
 
 void Army::printArmy() const {
